@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}
+完了
+{% endblock %}
+{% block content %}
+<h1>完了一覧</h1>
+<div class="container">
+    {% if complete_list == [] %}
+        <p style="text-align:center">完了済みのタスクはありません。</p>
+    {% else %}
+        <table>
+            <tr>
+                <th>件名</th>
+                <th>詳細</th>
+                <th>期限</th>
+                <th>状況</th>
+                <th>カテゴリ</th>
+                <th>復元</th>
+                
+            </tr>
+            {% for todo in complete_list %}
+            <tr>
+                <td>{{ todo.title }}</td>
+                <td>{{ todo.detail }}</td>
+                <td>{{ todo.deadline }}</td>
+                <td>{{ todo.status }}</td>
+                <td>{{ todo.category }}</td>
+                <td>
+                    <form method="post" action="/back">
+                        <input type="hidden" name="id" value="{{ todo.id }}">
+                        <button type="submit" class="link">復元</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+    <!-- トップページに戻る -->
+    <div class="back-link-wrapper">
+        <a href="/" class="btn-link-back">一覧に戻る</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}
+編集
+{% endblock %}
+{% block content %}
+<h1>編集</h1>
+<div class="container">
+    <form method="POST" action="">
+        <input type="hidden" name="id" value="{{ post.id }}">
+        <table>
+            <tr>
+                <th>件名</th>
+                <th>詳細</th>
+                <th>期限</th>
+                <th>状況</th>
+                <th>カテゴリ</th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" name="title" value="{{ post.title }}">
+                </td>
+                <td>
+                    <input type="text" name="detail" value="{{ post.detail }}">
+                </td>
+                <td>
+                    <input type="date" name="deadline" value="{{ post.deadline }}">
+                </td>
+                <td>
+                    <select name="status" required>
+                        <option value="" disabled {% if not post.status %}selected{% endif %}>選択してください</option>
+                        <option value="進行中" {% if post.status == '進行中' %}selected{% endif %}>進行中</option>
+                        <option value="完了" {% if post.status == '完了' %}selected{% endif %}>完了</option>
+                    </select>
+                </td>
+                <td>
+                    <select name="category" required>
+                        <option value="" disabled {% if not post.category %}selected{% endif %}>選択してください</option>
+                        <option value="仕事" {% if post.category == '仕事' %}selected{% endif %}>仕事</option>
+                        <option value="プライベート" {% if post.category == 'プライベート' %}selected{% endif %}>プライベート</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <input type="submit" value="更新" class="btn-submit">
+    </form>
+    <!--一覧に戻るボタン-->
+    <div class="back-link-wrapper">
+        <a href="/" class="btn-link-back">一覧に戻る</a>
+    </div>
+</div>
+{% endblock %}

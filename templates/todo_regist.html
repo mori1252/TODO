@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}
+新規登録
+{% endblock %}
+{% block content %}
+<h1>新規登録</h1>
+<div class="container">
+    <form method="POST">
+        <table>
+            <tr>
+                <th>件名</th>
+                <th>詳細</th>
+                <th>期限</th>
+                <th>状況</th>
+                <th>カテゴリ</th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" name="title" required>
+                </td>
+                <td>
+                    <input type="text" name="detail">
+                </td>
+                <td>
+                    <input type="date" name="deadline">
+                </td>
+                <td>
+                    <select name="status" required>
+                        <option value="" selected disabled>選択してください</option>
+                        <option value="進行中" >進行中</option>
+                        <option value="完了">完了</option>
+                    </select>
+                </td>
+                <td>
+                    <select name="category" required>
+                        <option value="" selected disabled>選択してください</option>
+                        <option value="仕事">仕事</option>
+                        <option value="プライベート">プライベート</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <!--新規登録ボタン-->
+        <input type="submit" value="登録完了" class="btn-submit">
+    </form>
+    <!--一覧に戻るボタン-->
+    <div class="back-link-wrapper">
+        <a href="/" class="btn-link-back">一覧に戻る</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}
+ゴミ箱
+{% endblock %}
+
+{% block content %}
+<h1>ゴミ箱一覧</h1>
+<div class="container">
+    {% if trash_list == [] %}
+        <p style="text-align:center">ゴミ箱は空です。</p>
+    {% else %}
+        <table>
+            <tr>
+                <th>件名</th>
+                <th>詳細</th>
+                <th>期限</th>
+                <th>状況</th>
+                <th>復元</th>
+            </tr>
+            {% for todo in trash_list %}
+            <tr>
+                <td>{{ todo.title }}</td>
+                <td>{{ todo.detail }}</td>
+                <td>{{ todo.deadline }}</td>
+                <td>{{ todo.status }}</td>
+                <td>
+                    <form method="post" action="/restore">
+                        <input type="hidden" name="id" value="{{ todo.id}} ">
+                        <button type="submit" class="link">復元</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+    <div class="back-link-wrapper">
+        <a href="/" class="btn-link-back">一覧に戻る</a>
+    </div>
+</div>
+{% endblock %}

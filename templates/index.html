@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>ToDo</h1>
+<div class="toolbar-wrapper">
+    <div class="toolbar">
+        <a href="/todo_regist">新規登録</a>
+        <a href="/todo_complete">完了一覧</a>
+        <a href="/trash">ゴミ箱一覧</a>
+        <form method="get" action="/">
+            <p class="sort-label">期限：
+                <select name="sort" onchange="this.form.submit()">
+                    <option value="asc" {% if sort_order == 'asc' %}selected{% endif %}>昇順</option>
+                    <option value="desc" {% if sort_order == 'desc' %}selected{% endif %}>降順</option>
+                </select>
+            </p>
+        </form>
+    </div>
+</div>
+{% if todo_list==[] %}
+<p style="text-align:center">ToDoは未登録です</p>
+{% else %}
+<table>
+    <tr>
+        <th>完了</th>
+        <th>件名</th>
+        <th>詳細</th>
+        <th>期限</th>
+        <th>状況</th>
+        <th>カテゴリ</th>
+        <th></th>
+        <th></th>
+    </tr>
+    {% for todo in todo_list %}
+        <tr>
+            <td>
+                <form method="post" action="/todo_complete_update">
+                    <input type="hidden" name="id" value="{{ todo.id }}">
+                    <input type="checkbox" onchange="this.form.submit()">
+                </form>
+            </td>
+            <td>{{todo.title}}</td>
+            <td>{{todo.detail}}</td>
+            <td>{{todo.deadline}}</td>
+            <td>{{todo.status}}</td>
+            <td>{{todo.category}}</td>
+            <td>
+                <a href="/{{todo.id}}/todo_edit">編集</a>
+            </td>
+            <td>
+                <form method="post" action="/todo_move_trash">
+                    <input type="hidden" name="id" value="{{ todo.id }}" >
+                    <button type="submit" class="link">ゴミ箱</button>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+{% endif %}
+{% endblock %}
