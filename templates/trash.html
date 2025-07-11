@@ -16,6 +16,7 @@
                 <th>詳細</th>
                 <th>期限</th>
                 <th>状況</th>
+                <th>カテゴリ</th>
                 <th>復元</th>
             </tr>
             {% for todo in trash_list %}
@@ -24,10 +25,12 @@
                 <td>{{ todo.detail }}</td>
                 <td>{{ todo.deadline }}</td>
                 <td>{{ todo.status }}</td>
+                <td>{{ todo.category }}</td>
                 <td>
                     <form method="post" action="/restore">
-                        <input type="hidden" name="id" value="{{ todo.id}} ">
+                        <input type="hidden" name="id" value="{{ todo.id }}">
                         <button type="submit" class="link">復元</button>
+                    </form>
                 </td>
             </tr>
             {% endfor %}

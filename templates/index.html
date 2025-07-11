@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>ToDo</h1>
+<div class="heading">
+    <img src="{{ url_for('static', filename='images/todo.png') }}" alt="ページの切れ端" class="image">
+    <h1>ToDo</h1>
+</div>
 <div class="toolbar-wrapper">
     <div class="toolbar">
         <a href="/todo_regist">新規登録</a>

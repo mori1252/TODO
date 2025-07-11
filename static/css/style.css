@@ -1,5 +1,10 @@
 /* 画面全体の設定 */
 body {
+    background-image:url(../images/fusen.png);
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-attachment:fixed;
+    background-size:contain;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
     font-weight: 400;
     line-height: 1.6;
@@ -8,6 +13,21 @@ body {
     margin: 0;
     padding: 2em;
 }
+
+/* 見出し */
+.heading{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:2rem;
+}
+
+.image{
+    height:90.86px;
+    width:auto;
+    display:block;
+}
+
 
 /* 編集ページコンテナ */
 .container {
@@ -19,10 +39,9 @@ body {
 /* 見出し */
 h1 {
     text-align: center;
-    color: #1d1d1f;
+    color: #000000;
     font-size: 2.4rem;
     font-weight: 600;
-    margin-bottom: 2em;
 }
 
 /* 表のスタイル */
@@ -35,14 +54,14 @@ table {
     border-radius: 12px;
     overflow: hidden;
     box-shadow: none;  /* シャドウ削除 */
-    border: 1.5px solid #a5d6a7;  /* 枠線をはっきり強調 */
+    border: 1.5px solid #d4d6a5;  /* 枠線をはっきり強調 */
+    opacity:0.8;
 }
 
 th {
     background-color: #e8f5e9;
     color: #1d1d1f;
     font-weight: 600;
-    text-align: left;
 }
 
 td {
@@ -51,10 +70,13 @@ td {
 }
 
 td, th {
+    text-align: center;
     vertical-align: middle;
     padding: 1em 1.2em;
     font-size: 1rem;
     border-bottom: 1px solid #ddd;
+    border: 1px solid #e0e0e0;  /* セルごとの薄い枠線 */
+    padding: 8px 12px;          /* 少し余白を追加 */
 }
 
 tr:hover td {
@@ -132,6 +154,7 @@ form {
     color: #1d1d1f;
     border: 1.5px solid #a5d6a7;  /* やや濃い緑で輪郭を明確に */
     box-shadow: none;  /* ぼかしを除去してシャープに */
+    opacity:0.8;
 }
 
 .toolbar > * {
