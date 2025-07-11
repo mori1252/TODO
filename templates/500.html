@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}
+500 - サーバーエラーが発生しました
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>500 - サーバーエラーが発生しました</h1>
+    <p class="error_message">サーバーで問題が発生しました。しばらくしてから再度アクセスしてください。</p>
+    <div class="back-link-wrapper">
+        <a href="/" class="btn-link-back">一覧に戻る</a>
+    </div>
+</div>
+{% endblock %}

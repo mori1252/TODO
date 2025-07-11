@@ -7,7 +7,7 @@
     <title>{% block title %}ToDo{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body>
+<body class="{{ body_class | default('normal')}}">
     {% block content %}
     {% endblock %}
 </body>

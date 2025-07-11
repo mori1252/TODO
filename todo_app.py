@@ -1,5 +1,4 @@
-from flask import Flask
-from flask import render_template,g,redirect,request
+from flask import Flask, render_template,g,redirect,request
 import sqlite3
 DATABASE="flasktodo.db"
 
@@ -84,6 +83,18 @@ def todo_restore_from_trash():
     db.execute("UPDATE todo SET is_deleted = 0 WHERE id = ?", (todo_id,))
     db.commit()
     return redirect('/trash')
+
+@app.route('/error_test')
+def error_test():
+    raise Exception("テスト用エラー")
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html', body_class="error"), 404
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    return render_template('500.html', body_class="error"), 500
 
 if __name__ == '__main__':
     app.run()

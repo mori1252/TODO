@@ -1,5 +1,5 @@
 /* 画面全体の設定 */
-body {
+body.normal {
     background-image:url(../images/fusen.png);
     background-repeat:no-repeat;
     background-position:center center;
@@ -217,4 +217,12 @@ form {
     cursor: pointer;
     padding: 0;
     font: inherit;
+}
+
+.error_message{
+    text-align:center;
+}
+
+body.error .btn-link-back{
+    color:#000000 !important;
 }
