@@ -1,4 +1,4 @@
-from flask import Flask, render_template,g,redirect,request
+from flask import Flask, render_template, g, redirect, request
 import sqlite3
 DATABASE="flasktodo.db"
 
